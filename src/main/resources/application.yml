@@ -8,3 +8,5 @@ spring:
     hibernate.ddl-auto: validate
     generate-ddl: true
     show-sql: true
+  flyway:
+    default-schema: simple-task-manager
