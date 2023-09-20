@@ -21,7 +21,7 @@ export class TaskFormDialogComponent {
     this.taskForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: [''],
-      deadline: [''],
+      deadline: ['', Validators.required],
     });
   }
 
@@ -29,15 +29,11 @@ export class TaskFormDialogComponent {
     if (this.taskForm.valid) {
       const formData = this.taskForm.value;
 
-      if (formData.deadline) {
-        formData.deadline = this.datePipe.transform(
-          formData.deadline,
-          'yyyy-MM-ddTHH:mm:ss'
-        );
-        formData.status = Status.TODO;
-      } else {
-        formData.status = Status.DRAFT;
-      }
+      formData.deadline = this.datePipe.transform(
+        formData.deadline,
+        'yyyy-MM-ddTHH:mm:ss'
+      );
+      formData.status = Status.TODO;
 
       this.taskService.saveTask(formData).subscribe(() => {
         this.returnToMainPage();

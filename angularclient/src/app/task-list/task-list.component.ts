@@ -3,6 +3,7 @@ import { Task } from '../task/task';
 import { TaskService } from '../task/task.service';
 import { TaskDetailsDialogComponent } from '../task-details-dialog/task-details-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Status } from '../task/status';
 
 @Component({
   selector: 'app-task-list',
@@ -10,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./task-list.component.sass'],
 })
 export class TaskListComponent implements OnInit {
+  protected readonly Status = Status;
   tasks: Task[] = [];
   rowCount: number = 0;
   sortedColumn: string | null = 'deadline';
@@ -37,7 +39,7 @@ export class TaskListComponent implements OnInit {
       this.isAscending = true;
     }
 
-    this.tasks.sort((a, b) => {
+    this.tasks.sort((a: Task, b: Task) => {
       const aValue = a[this.sortedColumn as keyof Task];
       const bValue = b[this.sortedColumn as keyof Task];
 
@@ -52,6 +54,12 @@ export class TaskListComponent implements OnInit {
       if (aValue < bValue) return this.isAscending ? -1 : 1;
       if (aValue > bValue) return this.isAscending ? 1 : -1;
       return 0;
+    });
+  }
+
+  updateTaskStatus(task: Task) {
+    this.taskService.updateTask(task).subscribe(() => {
+      this.taskService.fetchAllTasks();
     });
   }
 }

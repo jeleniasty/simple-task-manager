@@ -20,7 +20,7 @@ export class TaskService {
   public fetchAllTasks(): void {
     this.http
       .get<Task[]>(this.taskBaseUrl)
-      .subscribe((data) => this.tasksSubject.next(data));
+      .subscribe((data: Task[]) => this.tasksSubject.next(data));
   }
 
   public saveTask(task: Task): Observable<Task> {

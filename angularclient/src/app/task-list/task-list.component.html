@@ -11,7 +11,15 @@
           <td>{{ rowCount + 1 + i }}</td>
           <td>{{ task.title }}</td>
           <td>{{ task.deadline }}</td>
-          <td>{{ task.status }}</td>
+            <td>
+                <div (click)="$event.stopPropagation()">
+                <select [value]="task.status" [(ngModel)]="task.status" (change)="updateTaskStatus(task)" >
+                    <option value="TODO" >TODO</option>
+                    <option value="IN_PROGRESS" >In Progress</option>
+                    <option value="DONE" >Done</option>
+                </select>
+                </div>
+            </td>
         </tr>
       </tbody>
     </table>

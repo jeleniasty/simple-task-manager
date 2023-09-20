@@ -35,6 +35,7 @@ public class TaskEntity {
 
   private String description;
 
+  @NonNull
   private LocalDateTime deadline;
 
   @Enumerated(EnumType.STRING)
@@ -43,7 +44,7 @@ public class TaskEntity {
   public TaskEntity(
     @NonNull String title,
     String description,
-    LocalDateTime deadline,
+    @NonNull LocalDateTime deadline,
     Status status
   ) {
     this.title = title;
