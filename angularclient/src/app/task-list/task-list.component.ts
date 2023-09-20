@@ -9,12 +9,14 @@ import { TaskService } from '../task/task.service';
 })
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
+  rowCount: number = 0;
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit() {
-    this.taskService.fetchAllTasks().subscribe((data) => {
-      this.tasks = data;
-    });
+    this.taskService.fetchAllTasks();
+    this.taskService.tasks$.subscribe((data) => (this.tasks = data));
   }
+
+  // openTaskDetailsDialog(id: number | undefined) {}
 }

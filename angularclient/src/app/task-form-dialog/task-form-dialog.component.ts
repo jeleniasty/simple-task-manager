@@ -40,6 +40,7 @@ export class TaskFormDialogComponent {
   }
 
   returnToMainPage() {
+    this.taskService.fetchAllTasks();
     this.dialogRef.close();
   }
 }
