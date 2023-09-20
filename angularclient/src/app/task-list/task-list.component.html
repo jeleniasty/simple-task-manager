@@ -1,7 +1,5 @@
-<div class="card my-5">
-  <div class="card-body">
-    <table class="table table-bordered table-striped">
-      <thead class="thead-dark">
+<div>
+    <table>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Title</th>
@@ -9,7 +7,6 @@
           <th scope="col">Deadline</th>
           <th scope="col">Status</th>
         </tr>
-      </thead>
       <tbody>
         <tr *ngFor="let task of tasks">
           <td>{{ task.id }}</td>
@@ -20,5 +17,4 @@
         </tr>
       </tbody>
     </table>
-  </div>
 </div>
