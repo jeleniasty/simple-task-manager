@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>Update Task</h2>
+    <form [formGroup]="editTaskForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" formControlName="title">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" formControlName="description">
+        </div>
+        <div class="form-group">
+            <label for="deadline">Deadline</label>
+            <input type="datetime-local" class="form-control" id="deadline" formControlName="deadline">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" (click)="returnToMainPage()">Return</button>
+    </form>
+</div>

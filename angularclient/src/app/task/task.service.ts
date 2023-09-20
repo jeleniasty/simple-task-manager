@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Task } from './task';
 
 @Injectable({
@@ -23,7 +23,19 @@ export class TaskService {
       .subscribe((data) => this.tasksSubject.next(data));
   }
 
-  public saveTask(task: Task) {
+  public saveTask(task: Task): Observable<Task> {
     return this.http.post<Task>(this.taskBaseUrl, task);
+  }
+
+  getTask(taskId: number): Observable<Task> {
+    return this.http.get<Task>(`${this.taskBaseUrl}/${taskId}`);
+  }
+
+  updateTask(task: Task): Observable<Task> {
+    return this.http.put<Task>(this.taskBaseUrl, task);
+  }
+
+  removeTask(taskId: number): Observable<Task> {
+    return this.http.delete<Task>(`${this.taskBaseUrl}/${taskId}`);
   }
 }

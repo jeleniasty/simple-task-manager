@@ -8,7 +8,7 @@
           <th scope="col">Status</th>
         </tr>
       <tbody>
-        <tr *ngFor="let task of tasks; let i = index">
+        <tr *ngFor="let task of tasks; let i = index" (click)="openTaskDetailsDialog(task.id)">
           <td>{{ rowCount + 1 + i }}</td>
           <td>{{ task.title }}</td>
           <td>{{ task.description }}</td>

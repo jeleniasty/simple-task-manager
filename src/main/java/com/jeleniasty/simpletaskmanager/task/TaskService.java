@@ -34,17 +34,17 @@ public class TaskService {
   }
 
   @Transactional
-  public void updateTask(Long taskId, TaskDTO taskDTO) {
-    var task = taskRepository
-      .findById(taskId)
-      .orElseThrow(() -> new TaskNotFoundException(taskId));
+  public void updateTask(TaskEntity taskEntity) {
+    var existingTask = taskRepository
+      .findById(taskEntity.getId())
+      .orElseThrow(() -> new TaskNotFoundException(taskEntity.getId()));
 
-    task.setTitle(taskDTO.title());
-    task.setDescription(taskDTO.description());
-    task.setDeadline(taskDTO.deadline());
-    task.setStatus(taskDTO.status());
+    existingTask.setTitle(taskEntity.getTitle());
+    existingTask.setDescription(taskEntity.getDescription());
+    existingTask.setDeadline(taskEntity.getDeadline());
+    existingTask.setStatus(taskEntity.getStatus());
 
-    taskRepository.save(task);
+    taskRepository.save(existingTask);
   }
 
   @Transactional

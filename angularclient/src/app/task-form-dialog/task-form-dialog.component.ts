@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { TaskService } from '../task/task.service';
 import { DatePipe } from '@angular/common';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -13,7 +12,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class TaskFormDialogComponent {
   taskForm: FormGroup;
   constructor(
-    private router: Router,
     private taskService: TaskService,
     private formBuilder: FormBuilder,
     private datePipe: DatePipe,
@@ -26,7 +24,7 @@ export class TaskFormDialogComponent {
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.taskForm.valid) {
       const formData = this.taskForm.value;
       formData.deadline = this.datePipe.transform(
@@ -39,7 +37,7 @@ export class TaskFormDialogComponent {
     }
   }
 
-  returnToMainPage() {
+  returnToMainPage(): void {
     this.taskService.fetchAllTasks();
     this.dialogRef.close();
   }
