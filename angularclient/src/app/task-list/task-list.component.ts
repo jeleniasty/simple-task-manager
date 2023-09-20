@@ -12,6 +12,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
   rowCount: number = 0;
+  sortedColumn: string | null = 'deadline';
+  isAscending: boolean = true;
 
   constructor(private taskService: TaskService, private dialog: MatDialog) {}
 
@@ -26,5 +28,30 @@ export class TaskListComponent implements OnInit {
         data: { taskId: taskId },
       });
     }
+  }
+  sortTable(column: string) {
+    if (this.sortedColumn === column) {
+      this.isAscending = !this.isAscending;
+    } else {
+      this.sortedColumn = column;
+      this.isAscending = true;
+    }
+
+    this.tasks.sort((a, b) => {
+      const aValue = a[this.sortedColumn as keyof Task];
+      const bValue = b[this.sortedColumn as keyof Task];
+
+      if (!aValue) {
+        return this.isAscending ? -1 : 1;
+      }
+
+      if (!bValue) {
+        return this.isAscending ? 1 : -1;
+      }
+
+      if (aValue < bValue) return this.isAscending ? -1 : 1;
+      if (aValue > bValue) return this.isAscending ? 1 : -1;
+      return 0;
+    });
   }
 }
