@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TaskService } from '../task/task.service';
 import { DatePipe } from '@angular/common';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Status } from '../task/status';
 
 @Component({
   selector: 'app-task-form-dialog',
@@ -27,10 +28,17 @@ export class TaskFormDialogComponent {
   onSubmit(): void {
     if (this.taskForm.valid) {
       const formData = this.taskForm.value;
-      formData.deadline = this.datePipe.transform(
-        formData.deadline,
-        'yyyy-MM-ddTHH:mm:ss'
-      );
+
+      if (formData.deadline) {
+        formData.deadline = this.datePipe.transform(
+          formData.deadline,
+          'yyyy-MM-ddTHH:mm:ss'
+        );
+        formData.status = Status.TODO;
+      } else {
+        formData.status = Status.DRAFT;
+      }
+
       this.taskService.saveTask(formData).subscribe(() => {
         this.returnToMainPage();
       });
