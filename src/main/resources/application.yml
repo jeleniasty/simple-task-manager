@@ -1,12 +1,12 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306
+    url: jdbc:mysql://localhost:3306/simple-task-manager
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: root_password
   jpa:
-    hibernate.ddl-auto: validate
-    generate-ddl: true
+    hibernate:
+      ddl-auto: update
     show-sql: true
   flyway:
     default-schema: simple-task-manager

@@ -3,5 +3,5 @@ CREATE TABLE IF NOT EXISTS task (
     title varchar(255) NOT NULL UNIQUE,
     description text,
     deadline timestamp,
-    status enum('DRAFT', 'TODO', 'IN PROGRESS', 'DONE') NOT NULL
+    status enum('DRAFT', 'TODO', 'IN_PROGRESS', 'DONE') NOT NULL
 );
