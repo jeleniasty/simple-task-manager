@@ -23,13 +23,13 @@ public class TaskService {
     );
   }
 
-  public TaskEntity getTask(Long taskId) {
+  TaskEntity getTask(Long taskId) {
     return taskRepository
       .findById(taskId)
       .orElseThrow(() -> new TaskNotFoundException(taskId));
   }
 
-  public List<TaskEntity> getTasks() {
+  List<TaskEntity> getTasks() {
     return taskRepository.findAll();
   }
 
