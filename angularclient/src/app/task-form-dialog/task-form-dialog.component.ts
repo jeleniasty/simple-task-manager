@@ -25,7 +25,7 @@ export class TaskFormDialogComponent {
   ) {
     this.taskForm = this.formBuilder.group({
       title: ['', [Validators.required, Validators.maxLength(60)]],
-      description: [''],
+      description: ['', Validators.maxLength(255)],
       deadline: ['', [Validators.required, this.futureDateValidator]],
     });
   }

@@ -10,7 +10,7 @@
         <tr *ngFor="let task of tasks; let i = index" (click)="openTaskDetailsDialog(task.id)">
           <td>{{ rowCount + 1 + i }}</td>
           <td>{{ task.title }}</td>
-          <td>{{ task.deadline }}</td>
+          <td>{{ task.deadline | date:'yyyy-MM-dd HH:mm:ss' }}</td>
             <td>
                 <div (click)="$event.stopPropagation()">
                 <select [value]="task.status" [(ngModel)]="task.status" (change)="updateTaskStatus(task)" >

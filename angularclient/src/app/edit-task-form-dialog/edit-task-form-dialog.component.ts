@@ -30,7 +30,10 @@ export class EditTaskFormDialogComponent {
         this.data.taskToUpdate.title || '',
         [Validators.required, Validators.maxLength(60)],
       ],
-      description: [this.data.taskToUpdate.description || ''],
+      description: [
+        this.data.taskToUpdate.description || '',
+        Validators.maxLength(255),
+      ],
       deadline: [
         this.data.taskToUpdate.deadline || '',
         [Validators.required, this.futureDateValidator],

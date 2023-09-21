@@ -2,7 +2,7 @@
   <div *ngIf="task">
     <h2>{{ task.title }}</h2>
     <p>Description: {{ task.description }}</p>
-    <p>Deadline: {{ task.deadline }}</p>
+    <p>Deadline: {{ task.deadline | date:'yyyy-MM-dd HH:mm:ss' }}</p>
     <p>Status: {{ task.status }}</p>
   </div>
   <button type="button" class="btn btn-secondary" (click)="returnToMainPage()">Return</button>

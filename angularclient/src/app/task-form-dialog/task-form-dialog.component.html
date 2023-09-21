@@ -36,6 +36,15 @@
         id="description"
         formControlName="description"
       />
+      <div
+        *ngIf="
+          taskForm.get('description')?.hasError('maxlength') &&
+          taskForm.get('description')?.touched
+        "
+        class="error-message"
+      >
+        Description should be at most 255 characters long.
+      </div>
     </div>
     <div class="form-group">
       <label for="deadline">Deadline</label>
