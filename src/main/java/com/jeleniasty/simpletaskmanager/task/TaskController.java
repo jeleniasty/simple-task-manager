@@ -1,8 +1,10 @@
 package com.jeleniasty.simpletaskmanager.task;
 
+import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +19,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/api/task")
 @CrossOrigin(origins = "http://localhost:4200")
+@Validated
 public class TaskController {
 
   private final TaskService taskService;
 
   @PostMapping
-  public ResponseEntity<Void> createTask(@RequestBody TaskDTO taskDTO) {
-    taskService.createTask(taskDTO);
+  public ResponseEntity<Void> createTask(
+    @RequestBody @Valid CreateTaskDTO createTaskDTO
+  ) {
+    taskService.createTask(createTaskDTO);
     return ResponseEntity.status(201).build();
   }
 
@@ -38,8 +43,10 @@ public class TaskController {
   }
 
   @PutMapping
-  public ResponseEntity<Void> updateTask(@RequestBody TaskEntity task) {
-    taskService.updateTask(task);
+  public ResponseEntity<Void> updateTask(
+    @RequestBody UpdateTaskDTO updateTaskDTO
+  ) {
+    taskService.updateTask(updateTaskDTO);
 
     return ResponseEntity.ok().build();
   }

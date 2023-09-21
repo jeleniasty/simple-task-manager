@@ -12,13 +12,13 @@ public class TaskService {
   private final TaskRepository taskRepository;
 
   @Transactional
-  public void createTask(TaskDTO taskDTO) {
+  public void createTask(CreateTaskDTO createTaskDTO) {
     taskRepository.save(
       new TaskEntity(
-        taskDTO.title(),
-        taskDTO.description(),
-        taskDTO.deadline(),
-        taskDTO.status()
+        createTaskDTO.getTitle(),
+        createTaskDTO.getDescription(),
+        createTaskDTO.getDeadline(),
+        createTaskDTO.getStatus()
       )
     );
   }
@@ -34,15 +34,15 @@ public class TaskService {
   }
 
   @Transactional
-  public void updateTask(TaskEntity taskEntity) {
+  public void updateTask(UpdateTaskDTO updateTaskDTO) {
     var existingTask = taskRepository
-      .findById(taskEntity.getId())
-      .orElseThrow(() -> new TaskNotFoundException(taskEntity.getId()));
+      .findById(updateTaskDTO.getId())
+      .orElseThrow(() -> new TaskNotFoundException(updateTaskDTO.getId()));
 
-    existingTask.setTitle(taskEntity.getTitle());
-    existingTask.setDescription(taskEntity.getDescription());
-    existingTask.setDeadline(taskEntity.getDeadline());
-    existingTask.setStatus(taskEntity.getStatus());
+    existingTask.setTitle(updateTaskDTO.getTitle());
+    existingTask.setDescription(updateTaskDTO.getDescription());
+    existingTask.setDeadline(updateTaskDTO.getDeadline());
+    existingTask.setStatus(updateTaskDTO.getStatus());
 
     taskRepository.save(existingTask);
   }
