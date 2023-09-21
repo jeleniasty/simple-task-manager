@@ -36,6 +36,21 @@ To run database navigate to the project root and execute below command in comman
 #### Backend
 To run backend navigate to the project root and execute below command in command line (Bash, Powershell etc.): <br>
 `mvn spring-boot:run` or configure local run config in Intellij IDEA and execute it. Backend is served on 8080 port.
+Application provides following API:
+* POST /api/task - request to create task with following JSON body:<br>
+  * title: string
+  * description: string
+  * deadline: date in format: yyyy-MM-ddThh:mm:ss
+  * status: string enum ("TODO", "IN_PROGRESS", "DONE")
+* PUT /api/task - request to update task with following JSON body: <br>
+  * id: number 
+  * title: string
+  * description: string
+  * deadline: date in format: yyyy-MM-ddThh:mm:ss
+  * status: string enum ("TODO", "IN_PROGRESS", "DONE")
+* GET /api/task/{taskId} - request to get task with given id as a path variable
+* GET /api/task - request to get all tasks
+* DELETE /api/task/{taskId} - request to remove task with given id as a path variable
 
 #### Frontend
 To run frontend navigate to the angularclient project root and execute below command in command line (Bash, Powershell etc.): <br>
