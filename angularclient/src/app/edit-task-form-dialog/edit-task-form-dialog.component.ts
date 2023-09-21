@@ -1,5 +1,10 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { TaskService } from '../task/task.service';
 import { DatePipe } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -21,10 +26,28 @@ export class EditTaskFormDialogComponent {
   ) {
     this.editTaskForm = this.formBuilder.group({
       id: [this.data.taskToUpdate.id],
-      title: [this.data.taskToUpdate.title || '', Validators.required],
+      title: [
+        this.data.taskToUpdate.title || '',
+        [Validators.required, Validators.maxLength(60)],
+      ],
       description: [this.data.taskToUpdate.description || ''],
-      deadline: [this.data.taskToUpdate.deadline || ''],
+      deadline: [
+        this.data.taskToUpdate.deadline || '',
+        [Validators.required, this.futureDateValidator],
+      ],
+      status: [this.data.taskToUpdate.status || ''],
     });
+  }
+
+  futureDateValidator(control: AbstractControl): { [key: string]: any } | null {
+    const selectedDate = new Date(control.value);
+    const currentDate = new Date();
+
+    if (selectedDate <= currentDate) {
+      return { futureDate: true };
+    }
+
+    return null;
   }
 
   onSubmit(): void {

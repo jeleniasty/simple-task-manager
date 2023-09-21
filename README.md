@@ -13,6 +13,8 @@ Project has prettier configured. To keep code formatted you have to download nod
 After downloading node.js use following command: <br>`npm install --global prettier` <br>
 If you are using Intellij IDEA (preferable IDE) here is reference to further prettier config https://www.jetbrains.com/help/idea/prettier.html#ws_prettier_configure
 
-
+###
+#### Sass 
+To install and configure it in your IDE (preferably Intellij IDEA) follow this reference document: https://www.jetbrains.com/help/idea/transpiling-sass-less-and-scss-to-css.html#install_sass_scss
 
 

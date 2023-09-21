@@ -4,6 +4,24 @@
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" id="title" formControlName="title">
+          <div
+            *ngIf="
+          editTaskForm.get('title')?.hasError('required') &&
+          editTaskForm.get('title')?.touched
+        "
+            class="error-message"
+          >
+            Title is required.
+          </div>
+          <div
+            *ngIf="
+          editTaskForm.get('title')?.hasError('maxlength') &&
+          editTaskForm.get('title')?.touched
+        "
+            class="error-message"
+          >
+            Title should be at most 60 characters long.
+          </div>
         </div>
         <div class="form-group">
             <label for="description">Description</label>
@@ -12,6 +30,32 @@
         <div class="form-group">
             <label for="deadline">Deadline</label>
             <input type="datetime-local" class="form-control" id="deadline" formControlName="deadline">
+          <div
+            *ngIf="
+          editTaskForm.get('deadline')?.hasError('required') &&
+          editTaskForm.get('deadline')?.touched
+        "
+            class="error-message"
+          >
+            Deadline is required.
+          </div>
+          <div
+            *ngIf="
+          editTaskForm.get('deadline')?.hasError('futureDate') &&
+          editTaskForm.get('deadline')?.touched
+        "
+            class="error-message"
+          >
+            Deadline must be in the future.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="status">Status</label>
+            <select class="form-control" id="status" formControlName="status">
+              <option value="TODO">TODO</option>
+              <option value="IN_PROGRESS">In Progress</option>
+              <option value="DONE">Done</option>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="button" class="btn btn-secondary" (click)="returnToMainPage()">Return</button>
