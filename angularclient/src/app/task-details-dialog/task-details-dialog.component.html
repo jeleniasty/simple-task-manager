@@ -6,6 +6,6 @@
     <p>Status: {{ task.status }}</p>
   </div>
   <button type="button" class="btn btn-secondary" (click)="returnToMainPage()">Return</button>
-  <button type="button" class="btn btn-secondary" (click)="openEditTaskFormDialog()">Edit</button>
-  <button type="button" class="btn btn-primary" (click)="removeTask(task?.id)">Delete</button>
+  <button type="button" class="btn btn-primary" (click)="openEditTaskFormDialog()">Edit</button>
+  <button type="button" class="btn btn-secondary" (click)="removeTask(task?.id)">Delete</button>
 </div>
