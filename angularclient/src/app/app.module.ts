@@ -14,7 +14,13 @@ import { TaskDetailsDialogComponent } from './task-details-dialog/task-details-d
 import { EditTaskFormDialogComponent } from './edit-task-form-dialog/edit-task-form-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, TaskListComponent, TaskFormDialogComponent, TaskDetailsDialogComponent, EditTaskFormDialogComponent],
+  declarations: [
+    AppComponent,
+    TaskListComponent,
+    TaskFormDialogComponent,
+    TaskDetailsDialogComponent,
+    EditTaskFormDialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,11 +1,12 @@
 <div class="container">
-  <div class="row">
-    <div>
+    <div class="header">
       <h2>{{ title }}</h2>
-      <button class="btn btn-info" (click)="openTaskFormDialog()">
-        Add Task
-      </button>
+      <div>
+        <button  class="add-task-button" (click)="openTaskFormDialog()">
+          <img class="add-task-icon" src="favicon.ico">
+          Add Task
+        </button>
+      </div>
     </div>
     <router-outlet></router-outlet>
-  </div>
 </div>

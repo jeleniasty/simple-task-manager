@@ -1,26 +1,36 @@
-<div>
-    <table>
-        <tr>
-          <th scope="col" >#</th>
-          <th scope="col" >Title</th>
-          <th scope="col" (click)="sortTable('deadline')">Deadline</th>
-          <th scope="col" (click)="sortTable('status')">Status</th>
-        </tr>
-      <tbody>
-        <tr *ngFor="let task of tasks; let i = index" (click)="openTaskDetailsDialog(task.id)">
-          <td>{{ rowCount + 1 + i }}</td>
-          <td>{{ task.title }}</td>
-          <td>{{ task.deadline | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-            <td>
-                <div (click)="$event.stopPropagation()">
-                <select [value]="task.status" [(ngModel)]="task.status" (change)="updateTaskStatus(task)" >
-                    <option value="TODO" >TODO</option>
-                    <option value="IN_PROGRESS" >In Progress</option>
-                    <option value="DONE" >Done</option>
-                </select>
-                </div>
-            </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="tasks-container">
+  <table class="tasks-table">
+    <thead>
+      <tr class="tasks-header">
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col" (click)="sortTable('deadline')">Deadline</th>
+        <th scope="col" (click)="sortTable('status')">Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="let task of tasks; let i = index"
+        (click)="openTaskDetailsDialog(task.id)"
+      >
+        <td>{{ rowCount + 1 + i }}</td>
+        <td>{{ task.title }}</td>
+        <td>{{ task.deadline | date : "yyyy-MM-dd HH:mm:ss" }}</td>
+        <td>
+          <div (click)="$event.stopPropagation()">
+            <select
+              [value]="task.status"
+              [(ngModel)]="task.status"
+              (change)="updateTaskStatus(task)"
+            >
+              <option value="TODO">TODO</option>
+              <option value="IN_PROGRESS">In Progress</option>
+              <option value="DONE">Done</option>
+            </select>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

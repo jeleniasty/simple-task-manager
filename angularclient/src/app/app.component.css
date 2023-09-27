@@ -1,1 +1,49 @@
+.header {
+  background-color: lightblue;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(255, 255, 255);
+  border-radius: 8px;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 25px;
+  padding: 10px 100px;
+}
+
+h2 {
+  font-size: 26px;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  font-weight: 200;
+}
+
+.add-task-button {
+  display: flex;
+  flex: 1;
+
+  background-color: #ffd3d9;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  padding: 8px;
+
+  border-width: 1px;
+  border-radius: 10px;
+  border-style: none;
+  border-color: rgb(255, 255, 255);
+
+  align-items: center;
+  justify-content: center;
+}
+
+.add-task-button:hover {
+  background-color: lightpink;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.add-task-icon {
+  height: 30px;
+}
