@@ -13,7 +13,7 @@ import { Task } from '../task/task';
 @Component({
   selector: 'app-edit-task-form-dialog',
   templateUrl: './edit-task-form-dialog.component.html',
-  styleUrls: ['./edit-task-form-dialog.component.sass'],
+  styleUrls: ['./edit-task-form-dialog.component.css'],
 })
 export class EditTaskFormDialogComponent {
   editTaskForm: FormGroup;

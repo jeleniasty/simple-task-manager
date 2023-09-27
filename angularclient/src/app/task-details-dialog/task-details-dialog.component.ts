@@ -11,7 +11,7 @@ import { EditTaskFormDialogComponent } from '../edit-task-form-dialog/edit-task-
 @Component({
   selector: 'app-task-details-dialog',
   templateUrl: './task-details-dialog.component.html',
-  styleUrls: ['./task-details-dialog.component.sass'],
+  styleUrls: ['./task-details-dialog.component.css'],
 })
 export class TaskDetailsDialogComponent implements OnInit {
   task?: Task;

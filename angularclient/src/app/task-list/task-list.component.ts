@@ -8,7 +8,7 @@ import { Status } from '../task/status';
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.sass'],
+  styleUrls: ['./task-list.component.css'],
 })
 export class TaskListComponent implements OnInit {
   protected readonly Status = Status;

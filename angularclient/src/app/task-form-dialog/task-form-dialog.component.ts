@@ -13,7 +13,7 @@ import { Status } from '../task/status';
 @Component({
   selector: 'app-task-form-dialog',
   templateUrl: './task-form-dialog.component.html',
-  styleUrls: ['./task-form-dialog.component.sass'],
+  styleUrls: ['./task-form-dialog.component.css'],
 })
 export class TaskFormDialogComponent {
   taskForm: FormGroup;
