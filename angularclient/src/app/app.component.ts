@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskFormDialogComponent } from './task-form-dialog/task-form-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +15,8 @@ export class AppComponent {
   }
 
   openTaskFormDialog() {
-    this.dialog.open(TaskFormDialogComponent);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.panelClass = 'custom-dialog-panel';
+    this.dialog.open(TaskFormDialogComponent, dialogConfig);
   }
 }

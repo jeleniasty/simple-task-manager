@@ -16,6 +16,7 @@ export class TaskListComponent implements OnInit {
   rowCount: number = 0;
   sortedColumn: string | null = 'deadline';
   isAscending: boolean = true;
+  selectedColor: string = '';
 
   constructor(private taskService: TaskService, private dialog: MatDialog) {}
 
@@ -62,4 +63,6 @@ export class TaskListComponent implements OnInit {
       this.taskService.fetchAllTasks();
     });
   }
+
+  onStatusChange() {}
 }

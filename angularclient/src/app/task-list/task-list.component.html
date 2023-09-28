@@ -1,11 +1,11 @@
 <div class="tasks-container">
   <table class="tasks-table">
     <thead>
-      <tr class="tasks-header">
+      <tr>
         <th scope="col">#</th>
         <th scope="col">Title</th>
-        <th scope="col" (click)="sortTable('deadline')">Deadline</th>
-        <th scope="col" (click)="sortTable('status')">Status</th>
+        <th class="deadline-header" scope="col" (click)="sortTable('deadline')">Deadline</th>
+        <th class="status-header" scope="col" (click)="sortTable('status')">Status</th>
       </tr>
     </thead>
 
@@ -19,14 +19,14 @@
         <td>{{ task.deadline | date : "yyyy-MM-dd HH:mm:ss" }}</td>
         <td>
           <div (click)="$event.stopPropagation()">
-            <select
+            <select id="status-dropdown"
               [value]="task.status"
               [(ngModel)]="task.status"
               (change)="updateTaskStatus(task)"
             >
-              <option value="TODO">TODO</option>
-              <option value="IN_PROGRESS">In Progress</option>
-              <option value="DONE">Done</option>
+              <option class="status-todo" value="TODO">TODO</option>
+              <option class="status-inprogress" value="IN_PROGRESS">IN PROGRESS</option>
+              <option class="status-done" value="DONE">DONE</option>
             </select>
           </div>
         </td>
